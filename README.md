@@ -7,7 +7,7 @@
 
 Recognize everyday sounds (dog bark, rain, siren, keyboard typing, ...) from an audio clip and show the model's **confidence** for each prediction.
 
-👉 **Live demo:** _add your Hugging Face Space link here_
+   👉 **Demo:** run it yourself in Google Colab with the badge above (Section 14 launches a Gradio web app).
 
 ## How it works
 
