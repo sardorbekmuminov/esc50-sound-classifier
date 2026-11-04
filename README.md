@@ -7,7 +7,7 @@
 
 Recognize everyday sounds (dog bark, rain, siren, keyboard typing, ...) from an audio clip and show the model's **confidence** for each prediction.
 
-   👉 **Demo:** run it yourself in Google Colab with the badge above (Section 14 launches a Gradio web app).
+👉 **Demo:** run it yourself in Google Colab with the badge above (Section 14 launches a Gradio web app).
 
 ## How it works
 
@@ -23,13 +23,17 @@ Audio longer than 5 seconds is split into 5-second windows and the probabilities
 
 Three training strategies are compared on [ESC-50](https://github.com/karolpiczak/ESC-50) (2,000 clips, 50 classes), using the official folds: folds 1–3 train, fold 4 validation, fold 5 test.
 
-| Strategy | What is trained | Test accuracy |
-|----------|-----------------|---------------|
-| From scratch | all weights, random init | _fill in after running_ |
-| Feature extraction | final layer only (frozen backbone) | _fill in after running_ |
-| Fine-tuning | all weights from ImageNet init | _fill in after running_ |
+| Strategy | What is trained | Best val acc | Test acc |
+|----------|-----------------|-------------:|---------:|
+| From scratch | all weights, random init | 63.2% | 56.2% |
+| Feature extraction | final layer only (frozen backbone) | 58.5% | 55.2% |
+| **Fine-tuning** | all weights from ImageNet init | **79.2%** | **71.3%** |
 
-> Run the notebook and copy the table from **Section 10** here.
+**Findings**
+- Fine-tuning is clearly the best strategy: **71.3%** test accuracy, about 15 points above the other two (chance level for 50 classes is 2%).
+- A frozen ImageNet backbone performs about the same as training from scratch: ImageNet features alone do not describe spectrograms well, so the backbone has to adapt to them.
+- Validation accuracy is higher than test accuracy for every strategy, because the best epoch was selected on the validation fold. The test fold was never used for model selection.
+- Single run per strategy; results may vary by a few points between random seeds.
 
 ## Project structure
 
