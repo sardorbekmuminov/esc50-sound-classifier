@@ -1,0 +1,7 @@
+torch
+torchaudio
+timm
+librosa
+gradio
+numpy
+soundfile
